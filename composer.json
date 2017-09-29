@@ -6,7 +6,10 @@
         "php": ">=7.0.0",
         "filp/whoops": "~2.1",
         "patricklouys/http": "~1.4",
-        "nikic/fast-route": "^1.2"
+        "nikic/fast-route": "^1.2",
+        "rdlowrey/auryn": "^1.4",
+        "mustache/mustache": "^2.12",
+        "twig/twig": "~1.0"
     },
     "license": "MIT",
     "authors": [

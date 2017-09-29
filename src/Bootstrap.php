@@ -4,6 +4,9 @@ namespace YourNamespaceApp;
 
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/Homepage.php';
+require __DIR__ . '/Template/Renderer.php';
+require __DIR__ . '/Template/TwigRenderer.php';
+require __DIR__ . '/Template/FrontendTwigRenderer.php';
 
 error_reporting(E_ALL);
 
@@ -24,16 +27,10 @@ if ($environment !== 'production') {
 }
 $whoops->register();
 
-$request = new \Http\HttpRequest($_GET, $_POST, $_COOKIE, $_FILES, $_SERVER);
-$response = new \Http\HttpResponse;
+$injector = include('Dependencies.php');
 
-$content = '<h1>Hello World</h1>';
-$response->setContent($content);
-
-/* Code 404 Example
-* $response->setContent('404 - Page not found');
-* $response->setStatusCode(404);
-*/
+$request = $injector->make('Http\HttpRequest');
+$response = $injector->make('Http\HttpResponse');
 
 foreach ($response->getHeaders() as $header) {
   header($header, false);
@@ -62,7 +59,7 @@ switch ($routeInfo[0]) {
       $className = $routeInfo[1][0];
       $method = $routeInfo[1][1];
       $vars = $routeInfo[2];
-      $class = new $className;
+      $class = $injector->make($className);
       $class->$method($vars);
       break;
 }
