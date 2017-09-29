@@ -1,0 +1,17 @@
+{
+    "name": "hendrix/basic-mvc-php",
+    "description": "A basic structure app for php applications",
+    "type": "project",
+    "require": {
+        "php": ">=7.0.0",
+        "filp/whoops": "~2.1",
+        "patricklouys/http": "~1.4"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hendrix Roa",
+            "email": "hendrix.alex87@gmail.com"
+        }
+    ]
+}
