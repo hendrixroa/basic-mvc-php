@@ -21,9 +21,7 @@ class Connection {
     public function connect() {
  
         // read parameters in the ini configuration file
-        //$params = parse_ini_file( __DIR__ . '/../config/database.ini');
-        var_dump(__FILE__);
-        $params = null;
+        $params = parse_ini_file( __DIR__ . '/config/database.ini');
         if ($params === false) {
             throw new \Exception("Error reading database configuration file");
         }
