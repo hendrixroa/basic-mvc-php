@@ -7,6 +7,8 @@ require __DIR__ . '/Homepage.php';
 require __DIR__ . '/Template/Renderer.php';
 require __DIR__ . '/Template/TwigRenderer.php';
 require __DIR__ . '/Template/FrontendTwigRenderer.php';
+require __DIR__ . '/Menu/Menu.php';
+require __DIR__ . '/Menu/ArrayMenu.php';
 
 error_reporting(E_ALL);
 
