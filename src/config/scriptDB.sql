@@ -1,6 +1,6 @@
-DROP DATABASE d2hj549atsj0vg;
-CREATE DATABASE d2hj549atsj0vg;
-\connect d2hj549atsj0vg;
+DROP DATABASE test;
+CREATE DATABASE test;
+\connect test;
 
 CREATE TABLE items (
     code int,
