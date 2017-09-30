@@ -23,6 +23,7 @@ class Connection {
         // read parameters in the ini configuration file
         var_dump(__DIR__);
         //$params = parse_ini_file( __DIR__ . '/../config/database.ini');
+        $params = null;
         if ($params === false) {
             throw new \Exception("Error reading database configuration file");
         }
