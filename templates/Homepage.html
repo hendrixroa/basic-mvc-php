@@ -1,5 +1,12 @@
 {% extends "Layout.html" %}
 {% block content %}
     <h1>Hello World</h1>
-    Hello {{ name }}
+    Hello {{ name }} <br/>
+    <ul>
+        {% for item in items %}
+            <li>{{ item.code }} - {{ item.txt }} </li>
+        {% endfor %}
+    </ul>
+    
+
 {% endblock %}

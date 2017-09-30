@@ -50,6 +50,10 @@ class Connection {
  
         return static::$conn;
     }
+
+    public function closeConnection(){
+        static::$conn = null;
+    }
  
     public function __construct() {
     }

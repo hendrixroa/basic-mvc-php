@@ -17,26 +17,32 @@ class Homepage
     public function __construct(
         Request $request,
         Response $response, 
-        FrontendRenderer $renderer, 
-        Connection $connectionDb
+        FrontendRenderer $renderer
     ){
         $this->request = $request;
         $this->response = $response;
         $this->renderer = $renderer;
-        $this->connectionDb = $connectionDb; 
+          
+        try {
+            $this->connectionDb = Connection::get()->connect();
+            // Uncomment for debug, print_r('A connection to the PostgreSQL database sever has been established successfully.');
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getItems(){
+        $query = $this->connectionDb->prepare('SELECT * FROM items;');
+        $query->execute();
+        Connection::get()->closeConnection();
+        return $query->fetchAll();
     }
 
     public function show()
     {
-        try {
-            Connection::get()->connect();
-            echo 'A connection to the PostgreSQL database sever has been established successfully.';
-        } catch (\PDOException $e) {
-            echo $e->getMessage();
-        }
-
 		$data = [
-			'name' => $this->request->getParameter('name', 'stranger')
+            'name' => $this->request->getParameter('name', 'stranger'),
+            'items' => $this->getItems() 
 		];
 		$html = $this->renderer->render('Homepage', $data);
 		$this->response->setContent($html);
