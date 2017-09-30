@@ -23,5 +23,6 @@ $injector->delegate('Twig_Environment', function () use ($injector) {
 $injector->alias('YourNamespaceApp\Template\FrontendRenderer', 'YourNamespaceApp\Template\FrontendTwigRenderer');
 $injector->alias('YourNamespaceApp\Menu\MenuReader', 'YourNamespaceApp\Menu\ArrayMenuReader');
 $injector->share('YourNamespaceApp\Menu\ArrayMenuReader');
+$injector->share('YourNamespaceApp\Database\Connection');
 
 return $injector;
