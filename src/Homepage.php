@@ -42,7 +42,7 @@ class Homepage
     {
 		$data = [
             'name' => $this->request->getParameter('name', 'stranger'),
-            'items' => $this->getItems() 
+          //  'items' => $this->getItems() 
 		];
 		$html = $this->renderer->render('Homepage', $data);
 		$this->response->setContent($html);
